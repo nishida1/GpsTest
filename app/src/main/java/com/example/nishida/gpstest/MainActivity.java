@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int REQUEST_PERMISSION = 10;
+    private final int REQUEST_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 // それでも拒否された時の対応
                 Toast toast = Toast.makeText(this,
-                        "これ以上なにもできません", Toast.LENGTH_SHORT);
+                        "位置情報へのアクセス許可がないと動作しません", Toast.LENGTH_SHORT);
                 toast.show();
             }
         }

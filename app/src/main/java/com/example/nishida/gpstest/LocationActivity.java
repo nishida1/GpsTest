@@ -72,6 +72,9 @@ public class LocationActivity extends AppCompatActivity {
         textLog = "onCreate()\n";
         textView.setText(textLog);
 
+        //起動時に測位
+        startLocationUpdates();
+
         // 測位開始
         Button buttonStart = (Button) findViewById(R.id.button_start);
         buttonStart.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +104,7 @@ public class LocationActivity extends AppCompatActivity {
 
                 location = locationResult.getLastLocation();
 
-                lastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+                lastUpdateTime = DateFormat.getDateTimeInstance().format(new Date());
                 updateLocationUI();
             }
         };
@@ -112,7 +115,7 @@ public class LocationActivity extends AppCompatActivity {
         if (location != null) {
 
             String fusedName[] = {
-                    "Latitude", "Longitude", "Accuracy",
+                    "Latitude(緯度)", "Longitude(経度)", "Accuracy",
                     "Altitude", "Speed", "Bearing"
             };
 
@@ -135,7 +138,7 @@ public class LocationActivity extends AppCompatActivity {
                 strBuf.append("\n");
             }
 
-            strBuf.append("Time");
+            strBuf.append("Time(測位日時)");
             strBuf.append(" = ");
             strBuf.append(lastUpdateTime);
             strBuf.append("\n");
